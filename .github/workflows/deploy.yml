@@ -31,6 +31,5 @@ jobs:
         run: |
           curl -v -X POST \
                -H "Authorization: Bearer ${{ secrets.BOTSONIC_API_KEY }}" \
-               -H "Content-Type: multipart/form-data" \
                -F "file=@path/to/your/code.zip" \
                https://api-azure.botsonic.ai/v1/botsonic/generate
