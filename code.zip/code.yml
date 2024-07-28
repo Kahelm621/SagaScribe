@@ -1,6 +1,34 @@
-- name: Deploy to Botsonic
-  run: |
-    curl -v -X POST \
-         -H "Authorization: Bearer ${{ secrets.BOTSONIC_API_KEY }}" \
-         -F "file=@code.zip" \
-         https://api-azure.botsonic.ai/v1/botsonic/generate
+name: Deploy to Botsonic
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3 # This should be fine; v3 is recent
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.8"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Verify file path
+        run: |
+          ls -alh code.zip  # Ensure this path is correct
+
+      - name: Deploy to Botsonic
+        run: |
+          curl -v -X POST \
+               -H "Authorization: Bearer ${{ secrets.BOTSONIC_API_KEY }}" \
+               -F "file=@code.zip" \
+               https://api-azure.botsonic.ai/v1/botsonic/generate
