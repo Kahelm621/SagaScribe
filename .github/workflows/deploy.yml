@@ -22,10 +22,15 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Verify file path
+        run: |
+          ls -alh path/to/your
+          cat path/to/your/code.zip || true
+
       - name: Deploy to Botsonic
         run: |
-          curl -X POST \
+          curl -v -X POST \
                -H "Authorization: Bearer ${{ secrets.BOTSONIC_API_KEY }}" \
                -H "Content-Type: multipart/form-data" \
-               -F "https://github.com/Kahelm621/SagaScribe" \
+               -F "file=@path/to/your/code.zip" \
                https://api-azure.botsonic.ai/v1/botsonic/generate
