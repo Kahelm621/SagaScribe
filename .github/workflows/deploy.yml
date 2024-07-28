@@ -25,7 +25,3 @@ jobs:
       - name: Deploy to Botsonic
         run: |
           curl -X POST -H "Authorization: Bearer ${{ secrets.BOTSONIC_API_KEY }}" -F "file=@path/to/your/code.zip" https://api.botsonic.com/deploy
-
-          git add .github/workflows/deploy.yml
-git commit -m "c0aeba2a-6ee8-46a0-8872-2392016dec1e"
-git push origin main
