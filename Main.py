@@ -1,6 +1,6 @@
 from botsonic import Botsonic
 from story import setup_story
-from database import Database
+from scripts.database import Database
 
 # Initialize the bot
 bot = Botsonic("SagaScribe")

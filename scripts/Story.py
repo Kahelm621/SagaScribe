@@ -1,6 +1,6 @@
 from botsonic import Story, Scene, Decision, Outcome
-from characters import npc_guide
-from scenes import intro_scene, glade_scene, stream_scene, combat_scene, puzzle_scene
+from scripts.characters import npc_guide
+from scripts.scenes import intro_scene, glade_scene, stream_scene, combat_scene, puzzle_scene
 
 def setup_story():
     # Initialize the story
