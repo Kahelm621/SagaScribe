@@ -1,0 +1,19 @@
+version: "2.0"
+intents:
+  - greet
+  - explore
+  - interact
+  - choose
+
+responses:
+  utter_greet:
+    - text: "Hello, adventurer! What would you like to do?"
+  utter_explore_thicket:
+    - text: "You push through the thicket and discover a hidden glade with an ancient altar. What do you do?"
+  utter_explore_path:
+    - text: "You follow the path and hear the sound of running water. You soon find a sparkling stream. What do you do?"
+
+actions:
+  - action_interact_guide
+  - action_choose_path
+  - action_choose_thicket

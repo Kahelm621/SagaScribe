@@ -1,27 +1,38 @@
 from botsonic import Botsonic
 from story import setup_story
 from scripts.database import Database
+import os
+import multiprocessing
 
-# Initialize the bot
-bot = Botsonic("SagaScribe")
+def run_rasa_services():
+    # This function will start the Rasa server and Rasa shell
+    os.system("rasa run actions & rasa shell")
 
-# Setup the story
-story = setup_story()
-bot.set_story(story)
+if __name__ == "__main__":
+    # Start Rasa services in a separate process
+    rasa_process = multiprocessing.Process(target=run_rasa_services)
+    rasa_process.start()
 
-# Initialize the database
-database = Database()
+    # Initialize the bot
+    bot = Botsonic("SagaScribe")
 
-@bot.on_save
-def save_progress(user_id, state):
-    database.save(user_id, state)
+    # Setup the story
+    story = setup_story()
+    bot.set_story(story)
 
-@bot.on_load
-def load_progress(user_id):
-    return database.load(user_id)
+    # Initialize the database
+    database = Database()
 
-# Deploy the bot
-bot.deploy(platform="web", url="https://yourwebsite.com/sagascribe")
+    @bot.on_save
+    def save_progress(user_id, state):
+        database.save(user_id, state)
 
-# Start the bot
-bot.start()
+    @bot.on_load
+    def load_progress(user_id):
+        return database.load(user_id)
+
+    # Deploy the bot
+    bot.deploy(platform="web", url="https://yourwebsite.com/sagascribe")
+
+    # Start the bot
+    bot.start()

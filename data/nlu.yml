@@ -1,0 +1,24 @@
+version: "2.0"
+nlu:
+  - intent: greet
+    examples: |
+      - hello
+      - hi
+      - hey
+
+  - intent: explore
+    examples: |
+      - I want to explore the thicket
+      - let's go down the path
+      - explore the thicket
+      - follow the path
+
+  - intent: interact
+    examples: |
+      - talk to the guide
+      - speak with Eldrin
+
+  - intent: choose
+    examples: |
+      - I choose the path
+      - I'll go through the thicket
