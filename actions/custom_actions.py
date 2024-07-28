@@ -1,8 +1,10 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from scripts.database import get_inventory, update_inventory  # Adjusted for correct import
-from scripts.characters import get_guide_interaction  # Assuming this function exists
+
+# Ensure these imports are correct and the modules exist
+from scripts.database import get_inventory, update_inventory  
+from scripts.characters import get_guide_interaction  
 
 class ActionInteractGuide(Action):
 
@@ -13,8 +15,8 @@ class ActionInteractGuide(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        inventory = get_inventory(tracker.sender_id)  # Fetch user-specific inventory
-        interaction_text = get_guide_interaction()  # Assuming a function to get guide interaction
+        inventory = get_inventory(tracker.sender_id)  
+        interaction_text = get_guide_interaction()  
         dispatcher.utter_message(text=f"{interaction_text} Your inventory: {inventory}")
         return []
 
@@ -41,4 +43,3 @@ class ActionChooseThicket(Action):
         
         dispatcher.utter_message(response="utter_explore_thicket")
         return []
-
