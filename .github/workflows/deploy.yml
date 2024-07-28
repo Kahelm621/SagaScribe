@@ -31,5 +31,5 @@ jobs:
         run: |
           curl -v -X POST \
                -H "Authorization: Bearer ${{ secrets.BOTSONIC_API_KEY }}" \
-               -F "file=@path/to/your/code.zip" \
+               -F "C:\Users\tinke\OneDrive\Desktop\SagaScribe>" \
                https://api-azure.botsonic.ai/v1/botsonic/generate
