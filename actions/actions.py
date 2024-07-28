@@ -41,3 +41,4 @@ class ActionChooseThicket(Action):
         
         dispatcher.utter_message(response="utter_explore_thicket")
         return []
+
