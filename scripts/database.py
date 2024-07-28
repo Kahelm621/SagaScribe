@@ -1,11 +1,9 @@
-class Database:
-    def __init__(self):
-        self.data = {}
+# scripts/database.py
 
-    def save(self, user_id, state):
-        self.data[user_id] = state
+def get_inventory(user_id):
+    # Example implementation
+    return ["sword", "shield"]
 
-    def load(self, user_id):
-        return self.data.get(user_id, {})
-
-database = Database()
+def update_inventory(user_id, item):
+    # Example implementation
+    pass
