@@ -24,12 +24,11 @@ jobs:
 
       - name: Verify file path
         run: |
-          ls -alh path/to/your
-          cat path/to/your/code.zip || true
+          ls -alh path/to/your/code.zip  # Make sure the path is correct
 
       - name: Deploy to Botsonic
         run: |
           curl -v -X POST \
                -H "Authorization: Bearer ${{ secrets.BOTSONIC_API_KEY }}" \
-               -F "C:\Users\tinke\OneDrive\Desktop\SagaScribe>" \
+               -F "file=@path/to/your/code.zip" \
                https://api-azure.botsonic.ai/v1/botsonic/generate

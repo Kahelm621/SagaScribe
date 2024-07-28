@@ -1,0 +1,6 @@
+- name: Deploy to Botsonic
+  run: |
+    curl -v -X POST \
+         -H "Authorization: Bearer ${{ secrets.BOTSONIC_API_KEY }}" \
+         -F "file=@code.zip" \
+         https://api-azure.botsonic.ai/v1/botsonic/generate
